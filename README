@@ -1,0 +1,13 @@
+In implementarea proiectului am folosit Design Patternurile specificate in enunt astfel:
+
+-> Observer: implementarea observatorilor ce sunt notificati in cazul actualizarii feedului. Clasele corespunzatoare acestui Design Pattern sunt AbstractObserver, Observer, Subject.
+
+->Factory: crearea de observatori; crearea de opearatori in functie de tipul de operator specificat. Clasele corespunzatoare acestui Design Pattern sunt ObserverFactory si OperationFactory.
+
+->Singleton: crearea unei singure instante pentru fiecare tip de fabrica. Clasele corespunzatoare acestui Design Pattern sunt ObserverFactory si OperationFactory.
+
+->Visitor: Fiecare operatie este implementata sub forma unei clase ce trebuie sa implementeze interfata Operation - interfata contine metoda accept, ce invoca vizitatorul pentru a efectua o actiune in functie de clasa ce il apeleaza - si sa extinda clasa NodeOperation - clasa ce faciliteaza reprezentarea expresiei ce contine operatiile respective sub forma unui arbore de expresie. Clasele ce implementeaza interfata Opeartion si extind clasa NodeOperation sunt: Nil, Equal, NotEqual, Greater, GreaterEqual, Lower, LowerEqual, LogicalAND, LogicalOR, ValueNode, NameNode. Clasa OperationVisitor este interfata ce contine metodele care vor fii apelate in functie de tipul clasei ce invoca vizitatorul propriu-zis. Aceste metode vor intoarce valoarea de adevar corespunzatoare evaluarii operatiei din arborele de expresie, exceptie facand metodele corespunzatore claselor NameNode si ValueNode ce vor intoarce numele, respectiv valoarea feedului (acestea fiind frunzele din arbore). Clasa InitiateOperationVisitor este clasa ce implementeaza OpeartionVisitor si metodele acesteia.
+
+Clasa ExpressionTree contine o metoda ce construieste arborele de expresie, si un atribut (radacina arborelui) ce va fii de tipul NodeOperation. Astfel, pentru evaluarea arborelui de expresie prin Visitor Design Pattern trebuie instantiat un obiect de tipul ExpressionTree. 
+
+In Main se executa secvential fiecare comanda data la input.
